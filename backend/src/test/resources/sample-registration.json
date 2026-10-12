@@ -1,0 +1,76 @@
+{
+  "Tin": "0061688042",
+  "LegalCondtion": "2",
+  "RegNo": "BL/AA/2/0018364/2011",
+  "RegDate": "3/28/2019",
+  "BusinessName": "MEDCO TECHNOLOGY SOLUTIONS PLC",
+  "BusinessNameAmh": "ሜድኮ ቴክኖሎጂ ሶሉሽንስ ኃላ የተ የግ ማህበር",
+  "PaidUpCapital": 5000000.0,
+  "AssociateShortInfos": [
+    {
+      "Position": null,
+      "ManagerName": "ሰመረ ጻድቅ",
+      "ManagerNameEng": "SEMERE TSADIK",
+      "Photo": "/9j/4AECAw==",
+      "MobilePhone": null,
+      "RegularPhone": null
+    }
+  ],
+  "Businesses": [
+    {
+      "MainGuid": "7e7e0c7b-f9ed-4b34-a506-80ac4c6562eb",
+      "OwnerTIN": "0061688042",
+      "DateRegistered": "3/28/2019",
+      "TradeNameAmh": "ሜድኮ ቴክኖሎጂ ሶሉሽንስ ኃላ የተ የግ ማህበር",
+      "TradesName": "MEDCO TECHNOLOGY SOLUTIONS PLC",
+      "LicenceNumber": "BL/AA/14/673/2546312/2011",
+      "RenewalDate": "4/24/2026",
+      "RenewedFrom": "7/8/2025",
+      "RenewedTo": "7/7/2026",
+      "BusinessLicensingGroupMain": null,
+      "SubGroups": [
+        {
+          "Code": 39141,
+          "Description": "Software development (including design, enrichment and implementation)\n"
+        }
+      ]
+    },
+    {
+      "MainGuid": "122664f7-4585-41d9-b575-ea286e9ec85e",
+      "OwnerTIN": "0061688042",
+      "DateRegistered": "3/9/2020",
+      "TradeNameAmh": "ኣፍሪና ሄልዝ",
+      "TradesName": "Afrina Health",
+      "LicenceNumber": "TG/MK/KW/14/673/2593766/2012",
+      "RenewalDate": "1/5/2023",
+      "RenewedFrom": "7/7/2022",
+      "RenewedTo": "7/7/2023",
+      "BusinessLicensingGroupMain": null,
+      "SubGroups": [
+        {
+          "Code": 65751,
+          "Description": "Import trade in human health medical supplies and equipments"
+        }
+      ]
+    },
+    {
+      "MainGuid": "0e5e2f7a-68bf-4a00-8c47-edefc5d6fefd",
+      "OwnerTIN": "0061688042",
+      "DateRegistered": "4/20/2021",
+      "TradeNameAmh": "ቦስተን አድቫንስድ ላብራቶሪ",
+      "TradesName": "BOSTON ADVANCED LABORATORY",
+      "LicenceNumber": "BL/AA/14/673/5996481/2013",
+      "RenewalDate": "1/12/2024",
+      "RenewedFrom": "7/8/2023",
+      "RenewedTo": "7/7/2024",
+      "BusinessLicensingGroupMain": null,
+      "SubGroups": [
+        {
+          "Code": 92115,
+          "Description": "Diagnostic laboratory service"
+        }
+      ]
+    }
+  ],
+  "SomeFieldTheyAddedLater": "ignored"
+}

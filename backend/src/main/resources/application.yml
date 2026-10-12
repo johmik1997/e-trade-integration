@@ -1,0 +1,87 @@
+spring:
+  application:
+    name: etrade-integration
+  jackson:
+    default-property-inclusion: non_null
+    deserialization:
+      fail-on-unknown-properties: false   # the portal adds fields without notice
+  mvc:
+    problemdetails:
+      enabled: true
+  ssl:
+    bundle:
+      jks:
+        # etrade.gov.et serves a *mismatched* intermediate: it presents "GlobalSign
+        # Extended Validation CA - SHA256 - G3" while its leaf is issued by "GlobalSign
+        # GCC R3 EV TLS CA 2025", left over from a CA migration, so the JDK cannot build a
+        # path to any root it trusts. This store is the JDK's own cacerts plus the correct
+        # intermediate, recovered from the leaf's AIA extension. Regenerate it with
+        # backend/setup-truststore.sh when the certificate is next rotated.
+        etrade:
+          truststore:
+            location: classpath:etrade-truststore.p12
+            password: changeit
+            type: PKCS12
+
+server:
+  port: 8080
+  compression:
+    enabled: true
+    mime-types: application/json,application/problem+json
+
+etrade:
+  base-url: https://etrade.gov.et
+  ssl-bundle: etrade
+  connect-timeout: 5s
+  read-timeout: 30s          # the portal is routinely slow on a cold cache
+  retries: 1
+  # The portal's WAF rejects any call whose Referer is not on its own origin, with
+  # "417 Invalid referer headerr".
+  referer: https://etrade.gov.et/
+  # en only, deliberately: am and or return Ethiopian-calendar dates (19/7/2011 where en
+  # says 3/28/2019) and nothing here converts them yet.
+  supported-languages: [en]
+  # The portal publishes no code list for LegalCondtion. Add codes here as you confirm
+  # them; anything unmapped is returned with its raw code and a null label.
+  legal-conditions: {}
+  photo-cache:
+    max-size: 64MB
+    ttl: 6h
+  registration-cache:
+    max-entries: 2000
+    ttl: 1h
+  cors-allowed-origins:
+    - http://localhost:5173
+
+# Contribution fee schedule, keyed by the portal's LegalCondtion code.
+#
+# WARNING: these amounts are demo placeholders, not the published tariff. The categories
+# themselves are inferred from sampled records — e-Trade documents no code list — so
+# confirm both the codes and the fees before this is used for anything real. A code that is
+# not listed here is priced from `fallback` and flagged `inferred: true` in the response so
+# the UI can say the fee was not derived from a known category.
+contribution:
+  currency: ETB
+  categories:
+    "1":
+      label: Sole proprietor
+      fee: 1000.00
+    "2":
+      label: Private Limited Company
+      fee: 5000.00
+  fallback:
+    label: Standard contribution
+    fee: 2500.00
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
+  endpoint:
+    health:
+      show-details: when-authorized
+
+logging:
+  level:
+    et.medco.etrade: INFO
